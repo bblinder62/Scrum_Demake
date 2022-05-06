@@ -3,4 +3,15 @@
     <h3>You must log in to view this service</h3>
 <%}else{%>
     <h3>Welcome</h3>
+    <h4>Your Projects:</h4>
+    <%if(user.projects!=null){%>
+        <ul>
+            <%user.projects.forEach(element => {%>
+                <a href="/Project/<%=element%>"><%=element%></a>
+            <%})%>
+        </ul>
+        <a href="/JoinProject"><button type="button" class="btn btn-primary">Join a Project</button></a>
+    <%}else{%>
+        You have no projects. <a href="/JoinProject">Click here to join or create one</a>
+    <%}%>
 <%}%>

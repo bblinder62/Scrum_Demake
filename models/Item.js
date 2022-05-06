@@ -6,7 +6,8 @@ var itemSchema = Schema( {
   creator: String,
   title : String,
   description: String,
-  solved : Boolean
+  solved : Boolean,
+  project : String
 } );
 
 module.exports = mongoose.model( 'Item', itemSchema );

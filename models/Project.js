@@ -4,10 +4,10 @@ const Item = require('./Item');
 const Schema = mongoose.Schema;
 
 var projectSchema = Schema( {
-  creator: String,
-  title : String,
   ID : String,
-  Items : [{ type: Schema.Types.ObjectId, ref: 'Item' }]
+  title : String,
+  description:String,
+  items : [{ type: Schema.Types.ObjectId, ref: 'Item' }]
 
 } );
 

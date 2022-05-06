@@ -192,6 +192,84 @@ app.get('/todo',
   }
 )
 
+/**
+ * THIS IS ALL THE STUFF I MADE
+ * 
+ */
+app.get("/JoinProject",
+isLoggedIn,
+async(req,res,next)=>{
+  res.render("JoinProject")
+}
+)
+
+app.post("/Join",
+isLoggedIn,
+async(req,res,next)=>{
+  let result= await Project.find({ID:req.body.ID})
+  console.log(result)
+  if(result[0]!=undefined){
+    res.locals.user.projects.push(req.body.ID)
+    const newURL="/Project/"+req.body.ID
+    res.redirect(newURL)
+  }else{
+    res.redirect("/JoinProject")
+  }
+})
+
+app.post("/Create",
+isLoggedIn,
+async(req,res,next)=>{
+  const ID = req.body.ID
+  const title= req.body.title
+  const description = req.body.description
+  const project = new Project(
+    {ID,
+     title,
+     description
+    })
+  await project.save()
+  const newURI="/Project/"+ID
+  res.locals.user.projects.push(ID)
+  user.save()
+  console.log(res.locals.user)
+  res.redirect(newURI)
+})
+
+app.get("/Project/:ID",
+isLoggedIn,
+async(req,res,next)=>{
+  try{
+    let project = await Project.find({ID:req.params.ID}); // lookup the user's todo items
+    project[0].items=await Item.find({project:req.params.ID});
+    res.locals.project = project[0];
+    res.render("Project");
+  }catch(e){
+    next(e)
+  }
+  
+})
+
+app.post("/Project/:ID/addItem",
+isLoggedIn,
+async(req,res,next)=>{
+  const creator=res.locals.user.username
+  const project=req.params.ID
+  const title=req.body.title
+  const description=req.body.description
+  const solved=false
+  const item = new Item(
+    {creator,
+     title,
+     description,
+     solved,
+     project
+    })
+  await item.save()
+  const newURL="/Project/"+req.params.ID
+  res.redirect(newURL)
+})
+
 // here we catch 404 errors and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -221,6 +299,8 @@ app.set("port", port);
 // and now we startup the server listening on that port
 const http = require("http");
 const { reset } = require("nodemon");
+const { json } = require("express/lib/response");
+const { Console } = require("console");
 const server = http.createServer(app);
 
 server.listen(port);

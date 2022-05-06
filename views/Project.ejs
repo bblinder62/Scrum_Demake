@@ -1,0 +1,28 @@
+    <div class="bg-light border border-primary p-3 rounded m-3">
+        <h1 class="display-4 text-center">Project: <%=project.title%></h1>
+        <p class="lead text-center"><%= project.items.length %>  items created</p>
+    </div>
+    <hr>
+    <ol>
+        <% for (item of project.items){%>
+            <li class="mb-2">          
+                <%=item.title%> from <%=item.creator%><br>
+                <p style="text-indent: 50px"> Description: <%=item.description%></p>  
+                <p style="text-indent: 50px"> Solved = <%=item.solved%></p>
+            </li>
+        <% }%>
+    </ol>
+    <hr>
+    Add Item:
+    <form method="post" action="/Project/<%=project.ID%>/addItem">
+        title:<input type="text" name="title"><br>
+        description:<br><textarea name="description"></textarea><br>
+        <input type="submit" value="Save Item"><br>
+    </form>
+        
+        
+    
+
+
+
+        
