@@ -231,8 +231,6 @@ async(req,res,next)=>{
   await project.save()
   const newURI="/Project/"+ID
   res.locals.user.projects.push(ID)
-  user.save()
-  console.log(res.locals.user)
   res.redirect(newURI)
 })
 

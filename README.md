@@ -3,7 +3,10 @@ Ben Blinder's PA02 Assignment.
 
 Link to App: https://cs103a-pa03.herokuapp.com/ 
 Link to Repo: https://github.com/bblinder62/cs103a-cpa02
-Link to Video: 
+Link to Video: https://drive.google.com/file/d/13I4X4vk2Pa-hbgqwVM7XEmCbzFR8lmLq/view?usp=sharing
+
+# CAUTION
+After I recorded the video, I found a website breaking glitch, sometimes when you create a new Project it crashes, but it works locally so I have no idea what the problem is, and I cannot replicate it reliably.
 
 Basically, my app was meant to be a smaller remade version of Scrum where multiple users can join a project and keep track of what needs to be done for the project. 
 All you need to do is log in, and click the Join a project button, where you can then create or join a project. Currently, users need to set an ID that others can then enter in the Join section to join.
