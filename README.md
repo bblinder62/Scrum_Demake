@@ -1,5 +1,10 @@
 # cs103a-cpa02
 Ben Blinder's PA02 Assignment.
+
+Link to App: https://cs103a-pa03.herokuapp.com/ 
+Link to Repo: https://github.com/bblinder62/cs103a-cpa02
+Link to Video: 
+
 Basically, my app was meant to be a smaller remade version of Scrum where multiple users can join a project and keep track of what needs to be done for the project. 
 All you need to do is log in, and click the Join a project button, where you can then create or join a project. Currently, users need to set an ID that others can then enter in the Join section to join.
 You can add items to the projects, but I did not have time to add in solving or deleting items.
